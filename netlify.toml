@@ -1,0 +1,27 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Old WordPress addresses that should land somewhere sensible
+[[redirects]]
+  from = "/feed/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/wp-admin/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/wp-login.php"
+  to = "/"
+  status = 301
+
+[[headers]]
+  for = "/wp-content/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
